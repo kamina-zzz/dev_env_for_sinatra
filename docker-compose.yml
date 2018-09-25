@@ -1,0 +1,17 @@
+version: '3.6'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      RACK_ENV: production
+    command: 'ruby --verbose index.rb'
+    ports:
+      - '80:4567'
+    tty: true
+    stdin_open: true
